@@ -10,14 +10,18 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { SelectionPageComponent } from './selection-page/selection-page.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { SelectedRoastPageComponent } from './selected-roast-page/selected-roast-page.component'
+
 @NgModule({
-  // components get declared 
+  // components get declared
   declarations: [
     AppComponent,
     SplashComponent,
     RegisterComponent,
     LoginComponent,
-    SelectionPageComponent
+    SelectionPageComponent,
+    SelectedRoastPageComponent
   ],
   imports: [
     //modules get imported
@@ -25,6 +29,7 @@ import { SelectionPageComponent } from './selection-page/selection-page.componen
     AppRoutingModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
+    HttpClientModule,
   ],
   providers: [
     //services get provided
