@@ -3,21 +3,32 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SelectionPageComponent } from './selection-page/selection-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { SplashComponent } from './splash/splash.component';
+import { DemoMaterialModule } from './material-module';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { SelectionPageComponent } from './selection-page/selection-page.component';
 
 @NgModule({
+  // components get declared 
   declarations: [
     AppComponent,
+    SplashComponent,
+    RegisterComponent,
+    LoginComponent,
     SelectionPageComponent
   ],
   imports: [
+    //modules get imported
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DemoMaterialModule,
   ],
-  providers: [],
+  providers: [
+    //services get provided
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
