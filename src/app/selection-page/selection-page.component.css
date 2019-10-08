@@ -1,4 +1,46 @@
 
-.button {
-  background-color: blue;
+.button1 {
+  background-color: rgb(243, 149, 26);
+  padding: 10px;
+  float: center;
+  border-color: black;
+  border-radius: 40px;
+  opacity: 100;
+}
+
+.button2 {
+  background-color: rgb(172, 96, 21);
+  padding: 10px;
+  float: center;
+  border-color: black;
+  border-radius: 40px;
+  opacity: 100;
+
+}
+
+.button3 {
+  background-color: rgb(107, 63, 5);
+  padding: 10px;
+  float: center;
+  border-color: black;
+  border-radius: 40px;
+  opacity: 100;
+
+}
+
+.mat-toolbar {
+flex-direction: row;
+justify-content: space-around;
+background-color: white;
+}
+
+.NavBar {
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  color: black;
+  background-color: #c0c0c0;
+  position: sticky;
+  list-style: none;
+
 }

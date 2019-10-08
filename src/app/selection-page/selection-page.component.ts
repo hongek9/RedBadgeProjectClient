@@ -47,4 +47,4 @@ roastResults: any;
 }
 
 
-// hard code the three options, light, medium, dark roast coffee.
+
