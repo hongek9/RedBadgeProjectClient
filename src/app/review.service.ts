@@ -15,7 +15,7 @@ export class ReviewService {
   constructor(private http: HttpClient) { }
 
   addReview(review: Review, coffeeId: number): Observable<Review> {
-    return this.http.post<Review>(`http://localhost:3000/review/${coffeeId}`, review, this.httpOptions);
+    return this.http.post<Review>(`http://localhost:3000/review/${coffeeId}`, JSON.stringify(review), this.httpOptions);
   }
 
   getReview(coffeeId: number): Observable<Review[]> {
