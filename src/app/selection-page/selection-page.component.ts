@@ -21,7 +21,7 @@ export interface Choice {
 })
 export class SelectionPageComponent implements OnInit {
 roastResults: any[];
-
+ 
   choices: Choice[] = [
     {value: 'light', viewValue: 'Light Roast'},
     {value: 'medium', viewValue: 'Medium Roast'},
