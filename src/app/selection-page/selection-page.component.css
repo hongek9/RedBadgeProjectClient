@@ -1,4 +1,5 @@
 
+
 .button1 {
   background-color: rgb(243, 149, 26);
   padding: 10px;
@@ -35,12 +36,12 @@ background-color: white;
 }
 
 .NavBar {
-  flex-direction: row;
-  justify-content: space-around;
-  text-align: center;
-  color: black;
-  background-color: #c0c0c0;
-  position: sticky;
-  list-style: none;
-
+ flex-direction: row;
+ justify-content: space-around;
+ text-align: center;
+ color: black;
+ background-color: #c0c0c0;
+ position: sticky;
+ list-style: none;
 }
+
