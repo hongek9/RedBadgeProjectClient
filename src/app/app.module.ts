@@ -11,7 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { SelectionPageComponent } from './selection-page/selection-page.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { SelectedRoastPageComponent } from './selected-roast-page/selected-roast-page.component'
+import { SelectedRoastPageComponent } from './selected-roast-page/selected-roast-page.component';
+import { CheckoutComponent } from './checkout/checkout.component'
 
 @NgModule({
   // components get declared
@@ -21,7 +22,8 @@ import { SelectedRoastPageComponent } from './selected-roast-page/selected-roast
     RegisterComponent,
     LoginComponent,
     SelectionPageComponent,
-    SelectedRoastPageComponent
+    SelectedRoastPageComponent,
+    CheckoutComponent
   ],
   imports: [
     //modules get imported
