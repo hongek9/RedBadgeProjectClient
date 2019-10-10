@@ -1,9 +1,43 @@
 <!-- NavBar -->
 <mat-toolbar>Log Out
     <li href="/about">About</li>
-    <i class="material-icons">eco</i>
+    <i class="material-icons" routerLink="/home">eco</i>
     <li routerLink="/selectionPage">Our Choices</li>
     <i class="material-icons" routerLink="/checkout">shopping_cart</i>
-   </mat-toolbar>
+</mat-toolbar>
 
-   <h1>Checkout Page Works</h1>
+<div class="title">
+    <h1>Your Cart of Joy is Ready</h1>
+</div>
+
+<mat-grid-list class="grid" cols="1" rowHeight="3:1">
+    <mat-grid-tile>This is a placeholder for our table. When we get data we will build a table here showing what user
+        has bought. Will have product and picture of product??</mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list class="coupon" cols="1" rowHeight="6:1">
+    <h2>Coupon Code</h2>
+    <br>
+    <p>If you have a Promo Code, please enter it here</p>
+    <mat-form-field apperance="outline">
+        <input matInput placeholder="Promo Code">
+    </mat-form-field>
+    <button mat-stroked-button>Apply</button>
+</mat-grid-list>
+<mat-grid-list class="delivery" cols="1" rowHeight="4:1">
+    <h2>Delivery Address</h2>
+    <br>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Billing Address">
+    </mat-form-field>
+    <br>
+    <br>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Shipping Address">
+    </mat-form-field>
+</mat-grid-list>
+<br>
+<mat-grid-list class="finish" cols="1" rowHeight="9:1">
+    <button class="payment" mat-raised-button (click)="openDialog()">Payment Info</button>
+    <button class="confirm" mat-raised-button>Confirm and Buy Now</button>
+</mat-grid-list>
