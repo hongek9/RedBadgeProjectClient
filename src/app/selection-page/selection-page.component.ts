@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CoffeeService } from '../coffee.service';
-
-
 export interface Choice {
   value: string;
   viewValue: string;
 }
-
-
 @Component({
   selector: 'app-selection-page',
   templateUrl: './selection-page.component.html',
@@ -15,23 +11,18 @@ export interface Choice {
 })
 export class SelectionPageComponent implements OnInit {
 roastResults: any;
-
   choices: Choice[] = [
     {value: 'light', viewValue: 'Light Roast'},
     {value: 'medium', viewValue: 'Medium Roast'},
     {value: 'dark', viewValue: 'Dark Roast'}
   ];
 
-  constructor(
-    private coffeeService: CoffeeService,
-    ) { }
+  constructor(private coffeeService: CoffeeService) { }
 
   ngOnInit() {
     // this.searchRoast();
 
   }
-
-
 
   searchRoast(roast: string): void {
     this.coffeeService.getRoast(roast).subscribe(data => {
@@ -52,8 +43,4 @@ roastResults: any;
   //     console.log(this.searchResults.results);
   //   });
   // }
-
 }
-
-
-

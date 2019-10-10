@@ -7,24 +7,23 @@ import { CoffeeResult } from '../coffeeResults';
   styleUrls: ['./selected-roast-page.component.css']
 })
 export class SelectedRoastPageComponent implements OnInit {
-  @Input() roastResult: CoffeeResult;
-
   page = 1;
 
   selectedCoffee: any;
-  constructor() { }
 
+@Input() message: CoffeeResult;
+
+  constructor() { }
   ngOnInit() {
     this.runThis();
-  }
-
-  runThis(): void {
-    console.log(this.roastResult);
   }
 
   selectCoffee(coffee: any): void {
     this.selectedCoffee = coffee;
     this.page = 2;
   }
-
+  
+  runThis(): void{
+    console.log(this.message);
+  }
 }
