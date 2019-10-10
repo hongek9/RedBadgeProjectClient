@@ -7,3 +7,47 @@
   position: sticky;
   list-style: none;
 }
+.title {
+  text-align: center;
+  align-content: center;
+  color: #ffffff;
+  background-color: #171b20;
+  padding: 5px;
+}
+.grid{
+  background-color: #2D3033;
+  color: #ffffff;
+}
+.coupon {
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  background-color: #c0c0c0;
+  padding: 5px;
+}
+.delivery {
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+  background-color: #f9f7f7;
+  padding: 5px;
+}
+.finish {
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+}
+.confirm {
+  background-color: green;
+}
+.payment {
+  background-color: #337ab7; 
+}
+.mat-dialog-container {
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+li, i {
+  cursor: pointer;
+}
