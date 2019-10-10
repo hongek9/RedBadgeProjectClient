@@ -1,13 +1,10 @@
-
 <mat-toolbar class="NavBar" >Log Out
   <li href="/about">About</li>
   <i class="material-icons">eco</i>
   <li routerLink="/selectionPage">Our Choices</li>
   <i class="material-icons">shopping_cart</i>
-
 </mat-toolbar>
-
-<mat-toolbar>
+<mat-toolbar class="selectionbar" >
 <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
     <mat-button-toggle class="button1" (click)="searchRoast('light')" value="light">Light Roast</mat-button-toggle>
     <mat-button-toggle class="button2" (click)="searchRoast('medium')" value="medium">Medium Roast</mat-button-toggle>
@@ -15,5 +12,4 @@
   </mat-button-toggle-group>
 </mat-toolbar>
 
-
-
+<app-selected-roast-page class="box" [message]="roastResults" ></app-selected-roast-page>
