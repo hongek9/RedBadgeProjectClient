@@ -43,3 +43,8 @@
 .payment {
   background-color: #337ab7; 
 }
+.mat-dialog-container {
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
