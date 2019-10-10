@@ -1,1 +1,10 @@
-<p>selected-roast-page works!</p>
+<div *ngIf="page === 1">
+  <div *ngIf="roastResult">
+    <div *ngFor="let result of roastResult">
+      <p (click)=selectCoffee(result)>{{result.name}}</p>
+    </div>
+  </div>
+</div>
+<div *ngIf="page === 2">
+  <app-selected-coffee-page></app-selected-coffee-page>
+</div>

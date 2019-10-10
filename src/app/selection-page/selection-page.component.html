@@ -4,7 +4,6 @@
   <i class="material-icons">eco</i>
   <li routerLink="/selectionPage">Our Choices</li>
   <i class="material-icons">shopping_cart</i>
-
 </mat-toolbar>
 
 <mat-toolbar>
@@ -14,6 +13,9 @@
     <mat-button-toggle class="button3" (click)="searchRoast('dark')" value="dark">Dark Roast</mat-button-toggle>
   </mat-button-toggle-group>
 </mat-toolbar>
+<br/>
+<br/>
+<app-selected-roast-page [roastResult]="roastResults"></app-selected-roast-page>
 
 
 

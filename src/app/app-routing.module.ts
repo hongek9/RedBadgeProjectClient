@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { SelectionPageComponent } from './selection-page/selection-page.component';
 import { SelectedRoastPageComponent } from './selected-roast-page/selected-roast-page.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { SelectedCoffeePageComponent } from './selected-coffee-page/selected-coffee-page.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'selectionPage', component: SelectionPageComponent },
   { path: 'roastPage', component: SelectedRoastPageComponent },
   { path: 'checkout', component: CheckoutComponent},
+  { path: 'coffeePage', component: SelectedCoffeePageComponent}
 ];
 
 @NgModule({

@@ -1,1 +1,7 @@
-<p>review works!</p>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <textarea matInput #review placeholder="Leave a review"></textarea>
+  </mat-form-field>
+  <button mat-button class="button" (click)=createReview(review.value)>Submit</button>
+</form>
+
