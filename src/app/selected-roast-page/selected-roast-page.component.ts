@@ -22,7 +22,6 @@ export class SelectedRoastPageComponent implements OnInit {
     this.selectedCoffee = coffee;
     this.page = 2;
   }
-  
   runThis(): void{
     console.log(this.message);
   }
