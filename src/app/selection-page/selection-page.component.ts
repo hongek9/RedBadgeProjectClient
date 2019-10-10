@@ -16,17 +16,25 @@ roastResults: any;
     {value: 'medium', viewValue: 'Medium Roast'},
     {value: 'dark', viewValue: 'Dark Roast'}
   ];
+
   constructor(private coffeeService: CoffeeService) { }
+
   ngOnInit() {
     // this.searchRoast();
+
   }
+
   searchRoast(roast: string): void {
     this.coffeeService.getRoast(roast).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.roastResults = data;
       console.log(this.roastResults);
     });
   }
+
+
+
+
   // click (click: Choice): void {
   //   this.searchService.getResults(this.choices)
   //   .subscribe(data => {

@@ -11,5 +11,8 @@
     <mat-button-toggle class="button3" (click)="searchRoast('dark')" value="dark">Dark Roast</mat-button-toggle>
   </mat-button-toggle-group>
 </mat-toolbar>
+<br/>
+<br/>
+<app-selected-roast-page [roastResult]="roastResults"></app-selected-roast-page>
 
 <app-selected-roast-page class="box" [message]="roastResults" ></app-selected-roast-page>

@@ -9,11 +9,11 @@ import { SplashComponent } from './splash/splash.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { SelectionPageComponent } from './selection-page/selection-page.component';
-
 import { HttpClientModule } from '@angular/common/http';
 import { SelectedRoastPageComponent } from './selected-roast-page/selected-roast-page.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { ReviewComponent } from './review/review.component'
+import { ReviewComponent } from './review/review.component';
+import { SelectedCoffeePageComponent } from './selected-coffee-page/selected-coffee-page.component'
 
 @NgModule({
   // components get declared
@@ -25,7 +25,8 @@ import { ReviewComponent } from './review/review.component'
     SelectionPageComponent,
     SelectedRoastPageComponent,
     CheckoutComponent,
-    ReviewComponent
+    ReviewComponent,
+    SelectedCoffeePageComponent
   ],
   imports: [
     //modules get imported
@@ -36,6 +37,7 @@ import { ReviewComponent } from './review/review.component'
     HttpClientModule,
   ],
   providers: [
+
     //services get provided
   ],
   bootstrap: [AppComponent]

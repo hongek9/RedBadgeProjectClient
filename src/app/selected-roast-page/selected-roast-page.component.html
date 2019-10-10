@@ -1,29 +1,8 @@
 <div class="selectedCoffee">
     <div *ngIf="message" class="lightRoastResults" >
-        <div *ngFor="let result of message">
-                <!-- <mat-card-header>
-                        <mat-card-title>{{result.name}}</mat-card-title>
-                        <mat-card-subtitle>{{result.price}}</mat-card-subtitle>
-                      </mat-card-header> -->
-            
+        <div *ngFor="let result of message">     
         </div>
-        </div>
-    <!-- <div *ngIf="message" (click)="searchRoast('light')" class="mediumRoastResults" >
-        <div *ngFor="let result of message">
-            <h1>Medium Roast</h1>
-            <h2>{{result.name}}</h2>
-            <h3>{{result.description}}</h3>
-            <h3>{{result.price}}</h3>
-        </div>
-        </div>
-    <div *ngIf="message" (click)="searchRoast('light')" class="darkRoastResults" >
-        <div *ngFor="let result of message">
-            <h1>Dark Roast</h1>
-            <h2>{{result.name}}</h2>
-            <h3>{{result.description}}</h3>
-            <h3>{{result.price}}</h3>
-        </div>
-        </div> -->
+    </div>
 </div>
 
 <!--  The div tage with the *ngIf and *ngFor above is needed to render the proper data to the page. Not sure why, but we need it.  -->
@@ -37,12 +16,6 @@
           <mat-card-title>{{result.name}}</mat-card-title>
           <mat-card-subtitle>Price($): {{result.price}}</mat-card-subtitle>
         </mat-card-header>
-        
-        <!-- <mat-card-content>
-          <p>
-            {{result.description}}
-          </p>
-        </mat-card-content> -->
         <mat-card-actions>
           <button mat-button>LEARN MORE</button>
         </mat-card-actions>
@@ -50,6 +23,8 @@
 </div>
 </div>
 </div>
+
+<app-selected-coffee-page></app-selected-coffee-page>
 
 
 
@@ -76,3 +51,4 @@
 <p>{{message[1].name}}</p>
 </div>
 I used this message[1].name to dig into my second object in my array of results aka message. After I displayed my data to the page, I began to build out automation aka a ForLoop so that I can run through my results without hardcoding everything in. P.S. Autumn say to keep up the great attitude, stay strivin and learnin. -->
+
