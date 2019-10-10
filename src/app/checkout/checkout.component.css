@@ -48,3 +48,6 @@
   text-align: center;
   justify-content: center;
 }
+li, i {
+  cursor: pointer;
+}

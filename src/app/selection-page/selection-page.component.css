@@ -42,4 +42,6 @@ background-color: white;
  position: sticky;
  list-style: none;
 }
-
+li, i {
+  cursor: pointer;
+}
