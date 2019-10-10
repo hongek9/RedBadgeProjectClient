@@ -43,3 +43,15 @@ background-color: white;
  list-style: none;
 }
 
+.box {
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  display: flex;
+  background-color: #c0c0c0;
+}
+
+.selectionbar {
+  background-color: #c0c0c0;
+
+}
