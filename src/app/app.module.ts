@@ -13,7 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SelectedRoastPageComponent } from './selected-roast-page/selected-roast-page.component';
 import { CheckoutComponent, PaymentDialog } from './checkout/checkout.component';
 import { ReviewComponent } from './review/review.component';
-import { SelectedCoffeePageComponent } from './selected-coffee-page/selected-coffee-page.component'
+import { SelectedCoffeePageComponent } from './selected-coffee-page/selected-coffee-page.component';
+import { NavbarComponent } from './navbar/navbar.component'
 
 @NgModule({
   // components get declared
@@ -28,6 +29,7 @@ import { SelectedCoffeePageComponent } from './selected-coffee-page/selected-cof
     ReviewComponent,
     SelectedCoffeePageComponent,
     PaymentDialog,
+    NavbarComponent,
   ],
   entryComponents: [PaymentDialog],
 

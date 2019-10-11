@@ -1,12 +1,3 @@
-.mat-toolbar {
-  flex-direction: row;
-  justify-content: space-around;
-  text-align: center;
-  color: black;
-  background-color: #c0c0c0;
-  position: sticky;
-  list-style: none;
-}
 .grid1 {
   background-image: url('../../assets/aboutUs.jpg');
   background-repeat: no-repeat;
@@ -31,9 +22,6 @@
   background-size: 100vw;
   font-size: 40px;
   color: #ffffff;
-}
-li, i {
-  cursor: pointer;
 }
 button {
   background-color: transparent;
