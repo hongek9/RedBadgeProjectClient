@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
   signUpUser(testUser: any): void {
     this.userService.addUser(testUser).subscribe(data => {
       console.log(data);
-      localStorage.setItem('token', data.sessionToken);
+      // localStorage.setItem('token', data.sessionToken);
     });
   }
 
