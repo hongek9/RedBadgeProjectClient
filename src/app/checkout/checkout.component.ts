@@ -13,7 +13,8 @@ export class CheckoutComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PaymentDialog, {
-      width: '250px'
+      width: '500px',
+      height: '400px', 
     });
   }
 
