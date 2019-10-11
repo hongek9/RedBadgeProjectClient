@@ -1,13 +1,7 @@
-<!-- NavBar -->
-<mat-toolbar>Log Out
-  <li href="/about">About</li>
-  <i class="material-icons">eco</i>
-  <li routerLink="/selectionPage">Our Choices</li>
-  <i class="material-icons" routerLink="/checkout">shopping_cart</i>
- </mat-toolbar>
+<app-navbar></app-navbar>
  
  <!-- Layout of Links to get around the site -->
- <mat-grid-list class="grid1" cols="1" rowHeight="3:1">
+ <mat-grid-list class="grid1" cols="1" rowHeight="3:1" routerLink="/reviews">
     <mat-grid-tile>About Our Coffee</mat-grid-tile>
   </mat-grid-list>
   <mat-grid-list class="grid2" cols="1" rowHeight="3:1">
