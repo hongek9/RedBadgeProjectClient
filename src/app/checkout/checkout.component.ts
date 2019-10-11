@@ -1,6 +1,5 @@
-import { Component, Inject, } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-
 
 @Component({
   selector: 'app-checkout',
@@ -9,11 +8,12 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 })
 export class CheckoutComponent {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PaymentDialog, {
-      width: '250px'
+      width: '500px',
+      height: '400px', 
     });
   }
 
