@@ -33,11 +33,6 @@ export class RegisterComponent implements OnInit {
   signUpUser(testUser: any): void {
     this.userService.addUser(testUser).subscribe(data => {
       console.log(data);
-      this.token = data.sessionToken;
-      localStorage.setItem('token', data.sessionToken);
-      if (this.token) {
-        this.router.navigate(['/home'])
-      }
     });
   }
 
