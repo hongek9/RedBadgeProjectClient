@@ -16,6 +16,12 @@ export class CheckoutComponent {
       height: '400px', 
     });
   }
+  openEaster(): void {
+    const dialogRef = this.dialog.open(EasterDialog, {
+      width: '500px',
+      height: '400px',
+    });
+  }
 
   ngOnInit() {
   }
@@ -33,4 +39,17 @@ export class PaymentDialog{
     onNoClick(): void {
       this.dialogRef.close();
     }
+}
+
+@Component({
+  selector: 'easter-dialog',
+  templateUrl: 'easter-dialog.html',
+  styleUrls: ['easter-dialog.css']
+})
+export class EasterDialog{
+  constructor(public dialogRef: MatDialogRef<EasterDialog>,){}
+
+  onCloseClick(): void {
+    this.dialogRef.close();
+  }
 }
