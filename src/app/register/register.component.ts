@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,10 @@ export class RegisterComponent implements OnInit {
   token: any;
   sessionT: any;
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
     // this.signUpUser({user: {
@@ -29,7 +33,6 @@ export class RegisterComponent implements OnInit {
   signUpUser(testUser: any): void {
     this.userService.addUser(testUser).subscribe(data => {
       console.log(data);
-      // localStorage.setItem('token', data.sessionToken);
     });
   }
 
