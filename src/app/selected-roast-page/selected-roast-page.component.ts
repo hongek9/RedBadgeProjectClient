@@ -16,13 +16,9 @@ export class SelectedRoastPageComponent implements OnInit {
 
 @Input() message: CoffeeResult;
 
-  constructor(public dialog: MatDialog) { }
+  constructor() { }
   ngOnInit() {
     this.runThis();
-  }
-
-  openDialog(){
-    const dialogRef= this.dialog.open(ReviewDialog);
   }
 
   selectCoffee(coffee: any): void {
@@ -44,9 +40,14 @@ export class SelectedRoastPageComponent implements OnInit {
 export class ReviewDialog{
   reviewResults: any;
 
-  constructor(private reviewService: ReviewService) { }
+  constructor(private reviewService: ReviewService, public dialog:MatDialog) { }
 
-
+  openDialog(){
+    const dialogRef= this.dialog.open(ReviewDialog, {
+      width: '500px',
+      height: '400px',
+    });
+  }
 
     createReview(review: Review, coffeeId: number) {
       this.reviewService.addReview(review, coffeeId).subscribe(data => {
