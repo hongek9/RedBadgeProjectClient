@@ -1,4 +1,4 @@
-import { Component, Inject, } from '@angular/core';
+import { Component, Inject, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 
@@ -8,6 +8,11 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent {
+
+  selectedCoffee: any;
+  // buyNow: any;
+
+  @Input() buyNow: CheckoutComponent;
 
   constructor(public dialog: MatDialog) { }
 
@@ -19,6 +24,12 @@ export class CheckoutComponent {
 
   ngOnInit() {
   }
+
+  addToCheckout(coffee:any): void {
+    this.selectedCoffee = coffee;
+    // this.buyNow = [];
+  }
+
 
 }
 @Component({
