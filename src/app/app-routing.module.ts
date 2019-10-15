@@ -14,11 +14,11 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: SplashComponent, canActivate: [AuthguardService] },
-  { path: 'selectionPage', component: SelectionPageComponent },
-  { path: 'roastPage', component: SelectedRoastPageComponent },
-  { path: 'checkout', component: CheckoutComponent},
-  { path: 'coffeePage', component: SelectedCoffeePageComponent},
-  { path: 'reviews', component: ReviewComponent},
+  { path: 'selectionPage', component: SelectionPageComponent, canActivate: [AuthguardService] },
+  { path: 'roastPage', component: SelectedRoastPageComponent, canActivate: [AuthguardService] },
+  { path: 'checkout', component: CheckoutComponent, canActivate: [AuthguardService]},
+  { path: 'coffeePage', component: SelectedCoffeePageComponent, canActivate: [AuthguardService]},
+  { path: 'reviews', component: ReviewComponent, canActivate: [AuthguardService]},
 ];
 
 @NgModule({
