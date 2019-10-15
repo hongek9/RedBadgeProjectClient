@@ -7,15 +7,18 @@ import { SelectionPageComponent } from './selection-page/selection-page.componen
 import { SelectedRoastPageComponent } from './selected-roast-page/selected-roast-page.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { SelectedCoffeePageComponent } from './selected-coffee-page/selected-coffee-page.component';
+import { ReviewComponent } from './review/review.component';
+import { AuthguardService } from './authguard.service';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'home', component: SplashComponent },
+  { path: 'home', component: SplashComponent, canActivate: [AuthguardService] },
   { path: 'selectionPage', component: SelectionPageComponent },
   { path: 'roastPage', component: SelectedRoastPageComponent },
   { path: 'checkout', component: CheckoutComponent},
-  { path: 'coffeePage', component: SelectedCoffeePageComponent}
+  { path: 'coffeePage', component: SelectedCoffeePageComponent},
+  { path: 'reviews', component: ReviewComponent},
 ];
 
 @NgModule({
