@@ -17,7 +17,7 @@
           <mat-card-subtitle>Price($): {{result.price}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions>
-          <button mat-button (click)="openDialog">LEARN MORE</button>
+          <button mat-button (click)="openDialog(result)">LEARN MORE</button>
         </mat-card-actions>
       </mat-card>
 </div>
@@ -26,7 +26,7 @@
 <div *ngIf="page === 2">
 
 
-  <app-selected-coffee-page></app-selected-coffee-page>
+  <!-- <app-selected-coffee-page></app-selected-coffee-page> -->
 </div>
 
 

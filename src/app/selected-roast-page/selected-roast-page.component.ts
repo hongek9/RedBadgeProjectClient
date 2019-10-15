@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { CoffeeResult } from '../coffeeResults';
 import { ReviewService } from '../review.service';
 import { Review } from '../review';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-selected-roast-page',
@@ -16,19 +16,26 @@ export class SelectedRoastPageComponent implements OnInit {
 
 @Input() message: CoffeeResult;
 
-  constructor() { }
+  constructor(public dialog:MatDialog) {}
   ngOnInit() {
-    this.runThis();
+    // this.runThis();
   }
 
   selectCoffee(coffee: any): void {
     this.selectedCoffee = coffee;
     this.page = 2;
   }
-  runThis(): void{
-    console.log(this.message);
-  }
-  
+  // runThis(): void{
+  //   console.log(this.message);
+  // }
+  openDialog(result): void{
+    console.log(result);
+    const dialogRef= this.dialog.open(ReviewDialog, {
+      width: '500px',
+      height: '600px',
+      data: result
+    });
+  } 
 }
 
 @Component({
@@ -39,16 +46,13 @@ export class SelectedRoastPageComponent implements OnInit {
 
 export class ReviewDialog{
   reviewResults: any;
+  @Input() message: CoffeeResult;
 
-  constructor(private reviewService: ReviewService, public dialog:MatDialog) { }
-
-  openDialog(){
-    const dialogRef= this.dialog.open(ReviewDialog, {
-      width: '500px',
-      height: '400px',
-    });
+  constructor(private reviewService: ReviewService, @Inject(MAT_DIALOG_DATA) public data: any) { }
+_data;
+  ngOnInit() {
+  this._data = this.data
   }
-
     createReview(review: Review, coffeeId: number) {
       this.reviewService.addReview(review, coffeeId).subscribe(data => {
         console.log(data);
