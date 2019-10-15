@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
+import { SelectedRoastPageComponent } from '../selected-roast-page/selected-roast-page.component';
 
 @Component({
   selector: 'app-selected-coffee-page',
@@ -7,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectedCoffeePageComponent implements OnInit {
   selectedCoffee: any;
+
+
+  @Input() checkout: string[];
+
+
 
   constructor() { }
 
@@ -18,6 +24,7 @@ export class SelectedCoffeePageComponent implements OnInit {
 
   runThis(): void {
     console.log(this.selectedCoffee);
+    console.log(this.checkout);
   }
 
 

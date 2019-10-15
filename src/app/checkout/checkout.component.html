@@ -11,8 +11,25 @@
 </div>
 
 <mat-grid-list class="grid" cols="1" rowHeight="3:1">
-    <mat-grid-tile>This is a placeholder for our table. When we get data we will build a table here showing what user
-        has bought. Will have product and picture of product??</mat-grid-tile>
+    <mat-grid-tile>
+        
+            <div class="checkout">
+                    <div *ngIf="checkout" class="cart" >
+                        <div *ngFor="let result of checkout">
+                                <mat-card-header>
+                                        <mat-card-title>{{result.name}}</mat-card-title>
+                                </mat-card-header>
+                                <h1>Hi</h1>
+                        </div>
+                    </div>
+                </div>
+        
+                
+        <!-- This is a placeholder for our table. When we get data we will build a table here showing what user
+        has bought. Will have product and picture of product?? -->
+        
+        
+       </mat-grid-tile>
 </mat-grid-list>
 
 <mat-grid-list class="coupon" cols="1" rowHeight="6:1">

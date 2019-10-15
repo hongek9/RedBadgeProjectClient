@@ -30,8 +30,8 @@ export class SelectedRoastPageComponent implements OnInit {
   
   buyNow(name): void {
     this.name = name;
-    this.checkout = [];
-    // console.log(name);
+    this.checkout = [name];
+    console.log(name);
     console.log(this.checkout);
   }
 
