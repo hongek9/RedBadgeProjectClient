@@ -1,4 +1,5 @@
-import { Component, Inject } from '@angular/core';
+
+import { Component, Inject, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -8,7 +9,13 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 })
 export class CheckoutComponent {
 
-  constructor(public dialog: MatDialog,) {}
+  selectedCoffee: any;
+  // buyNow: any;
+
+  @Input() buyNow: CheckoutComponent;
+
+  constructor(public dialog: MatDialog) { }
+
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PaymentDialog, {
@@ -25,6 +32,12 @@ export class CheckoutComponent {
 
   ngOnInit() {
   }
+
+  addToCheckout(coffee:any): void {
+    this.selectedCoffee = coffee;
+    // this.buyNow = [];
+  }
+
 
 }
 @Component({
