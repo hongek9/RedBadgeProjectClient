@@ -26,7 +26,7 @@ export class CheckoutComponent {
   openEaster(): void {
     const dialogRef = this.dialog.open(EasterDialog, {
       width: '500px',
-      height: '400px',
+      height: '500px',
     });
   }
 

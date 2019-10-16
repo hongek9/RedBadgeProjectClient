@@ -1,3 +1,5 @@
 .modal{
   background-image: url('../../assets/pickle.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
