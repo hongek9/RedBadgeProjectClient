@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CoffeeResult } from '../coffeeResults';
 import { ReviewService } from '../review.service';
 import { Review } from '../review';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -14,31 +14,22 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/d
 
 export class SelectedRoastPageComponent implements OnInit {
   page = 1;
-  
+
   selectedCoffee: any;
+  name: any;
+  checkout = [];
 
+  @Input() message: CoffeeResult;
 
-@Input() message: CoffeeResult;
-
-  constructor(public dialog:MatDialog) {}
-
+  constructor() { }
   ngOnInit() {
-    // this.runThis();
+    this.runThis();
   }
-  
+
   selectCoffee(coffee: any): void {
     this.selectedCoffee = coffee;
     this.page = 2;
   }
-
-  openDialog(result): void{
-    console.log(result);
-    const dialogRef= this.dialog.open(ReviewDialog, {
-      width: '500px',
-      height: '600px',
-      data: result
-    });
-  } 
 
   buyNow(name): void {
     this.name = name;
@@ -61,31 +52,34 @@ export class SelectedRoastPageComponent implements OnInit {
 
 export class ReviewDialog{
   reviewResults: any;
-  @Input() message: CoffeeResult;
 
-  constructor(private reviewService: ReviewService, @Inject(MAT_DIALOG_DATA) public data: any) { }
-_data;
-  ngOnInit() {
-  this._data = this.data
+  constructor(private reviewService: ReviewService, public dialog:MatDialog) { }
+
+  openDialog(){
+    const dialogRef= this.dialog.open(ReviewDialog, {
+      width: '500px',
+      height: '400px',
+    });
   }
+
     createReview(review: Review, coffeeId: number) {
       this.reviewService.addReview(review, coffeeId).subscribe(data => {
         console.log(data);
       });
     }
-  
+
     findReviews(coffeId: number) {
       this.reviewService.getReview(coffeId).subscribe(data => {
           this.reviewResults = data;
       });
     }
-  
+
     updateReview(review: Review, coffeId: number) {
       this.reviewService.editReview(review, coffeId).subscribe(data => {
         console.log(data);
       });
     }
-  
+
     destroyReview(reviewId: number) {
       this.reviewService.deleteReview(reviewId).subscribe(data => {
         console.log(data);
