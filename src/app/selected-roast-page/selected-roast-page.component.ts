@@ -4,30 +4,33 @@ import { ReviewService } from '../review.service';
 import { Review } from '../review';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/dialog';
 
+
 @Component({
   selector: 'app-selected-roast-page',
   templateUrl: './selected-roast-page.component.html',
   styleUrls: ['./selected-roast-page.component.css']
 })
+
+
 export class SelectedRoastPageComponent implements OnInit {
   page = 1;
-
+  
   selectedCoffee: any;
+
 
 @Input() message: CoffeeResult;
 
   constructor(public dialog:MatDialog) {}
+
   ngOnInit() {
     // this.runThis();
   }
-
+  
   selectCoffee(coffee: any): void {
     this.selectedCoffee = coffee;
     this.page = 2;
   }
-  // runThis(): void{
-  //   console.log(this.message);
-  // }
+
   openDialog(result): void{
     console.log(result);
     const dialogRef= this.dialog.open(ReviewDialog, {
@@ -36,6 +39,18 @@ export class SelectedRoastPageComponent implements OnInit {
       data: result
     });
   } 
+
+  buyNow(name): void {
+    this.name = name;
+    this.checkout = [];
+    // console.log(name);
+    console.log(this.checkout);
+  }
+
+  runThis(): void{
+    console.log(this.message);
+  }
+
 }
 
 @Component({

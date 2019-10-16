@@ -54,10 +54,14 @@ li, i {
   justify-content: space-around;
   display: flex;
   background-color: #c0c0c0;
+  margin-top: -25px;
+
 }
 
 .selectionbar {
   background-color: #c0c0c0;
+  padding: 5px;
 
 }
+
 

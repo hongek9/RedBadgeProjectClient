@@ -13,6 +13,9 @@ export class SelectedCoffeePageComponent implements OnInit {
   ngOnInit() {
     this.runThis();
   }
+
+
+
   runThis(): void {
     console.log(this.selectedCoffee);
   }
