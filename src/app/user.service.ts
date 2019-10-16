@@ -26,7 +26,7 @@ export class UserService {
   }
 
   addUser(user: User): Observable<User> {
-    return this.http.post<User>(`http://localhost:3000/user/signup`, user).pipe(map(current => {
+    return this.http.post<User>(`https://jce-cupojoy-server.herokuapp.com/user/signup`, user).pipe(map(current => {
       localStorage.setItem('currentUser', JSON.stringify(current));
       this.currentUserSubject.next(current);
       return current;
@@ -34,7 +34,7 @@ export class UserService {
   }
 
   signInUser(user: User): Observable<User> {
-    return this.http.post<User>(`http://localhost:3000/user/signin`, user).pipe(map(current => {
+    return this.http.post<User>(`https://jce-cupojoy-server.herokuapp.com/user/signin`, user).pipe(map(current => {
       localStorage.setItem('currentUser', JSON.stringify(current));
       this.currentUserSubject.next(current);
       return current;
@@ -47,5 +47,6 @@ export class UserService {
   logout() {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+
   }
 }

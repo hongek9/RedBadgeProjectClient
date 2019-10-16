@@ -18,7 +18,8 @@ export class CoffeeService {
     private http: HttpClient) { }
 
   getRoast(roast: string): Observable<CoffeeResult[]> {
-    return this.http.get<CoffeeResult[]>(`http://localhost:3000/coffee/${roast}`)
+
+    return this.http.get<CoffeeResult[]>(`https://jce-cupojoy-server.herokuapp.com/coffee/${roast}`)
   }
 
 }
