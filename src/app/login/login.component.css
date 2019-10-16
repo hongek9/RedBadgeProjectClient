@@ -5,6 +5,7 @@
   color: white;
   background-color: #000000;
   padding: 10px;
+  margin: 0px;
 }
 .app-header{
   justify-content:space-between;
@@ -21,7 +22,7 @@
   align-items: center;
   justify-content: center;
   background-color: #c0c0cc; 
-  padding: 5px;
+  padding: 10px;
 }
 .box{
   width: 300px;
