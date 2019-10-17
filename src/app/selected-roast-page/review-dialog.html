@@ -1,15 +1,13 @@
- <div *ngIf="_data">
+<div *ngIf="_data">
   <div>
     <h1 mat-dialog-title>{{_data.name}}</h1>
     <p>{{_data.description}}</p>
-   </div>
+    <br>
+  </div>
 </div>
-
-
-
 <form class="example-form">
   <mat-form-field class="example-full-width">
     <textarea matInput #review placeholder="Leave a review"></textarea>
   </mat-form-field>
   <button mat-button class="button" (click)=createReview(review.value)>Submit</button>
-</form> 
+</form>

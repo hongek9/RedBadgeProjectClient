@@ -34,7 +34,6 @@ export class SelectedRoastPageComponent implements OnInit {
   buyNow(name): void {
     this.name = name;
     this.checkout = [];
-    // console.log(name);
     console.log(this.checkout);
   }
   openDialog(result): void{
@@ -49,7 +48,6 @@ export class SelectedRoastPageComponent implements OnInit {
   runThis(): void{
     console.log(this.message);
   }
-
 }
 
 @Component({
@@ -60,7 +58,6 @@ export class SelectedRoastPageComponent implements OnInit {
 
 export class ReviewDialog{
   reviewResults: any;
-  @Input() message: CoffeeResult;
 
   constructor(private reviewService: ReviewService, @Inject(MAT_DIALOG_DATA) public data: any) { }
   _data;
@@ -68,7 +65,6 @@ export class ReviewDialog{
   ngOnInit() {
     this._data = this.data;
   }
-
 
     createReview(review: Review, coffeeId: number) {
       this.reviewService.addReview(review, coffeeId).subscribe(data => {
@@ -94,4 +90,3 @@ export class ReviewDialog{
       });
     }
 }
-
