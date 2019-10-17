@@ -23,7 +23,6 @@ export class SelectedRoastPageComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
   ngOnInit() {
-    this.runThis();
   }
 
   selectCoffee(coffee: any): void {
@@ -31,13 +30,13 @@ export class SelectedRoastPageComponent implements OnInit {
     this.page = 2;
   }
 
-  buyNow(name): void {
+  buyNow(name: any): void {
     this.name = name;
     this.checkout = [];
     // console.log(name);
     console.log(this.checkout);
   }
-  openDialog(result): void{
+  openDialog(result: any): void{
     console.log(result);
     const dialogRef = this.dialog.open(ReviewDialog, {
       width: '500px',
@@ -46,9 +45,9 @@ export class SelectedRoastPageComponent implements OnInit {
     });
   }
 
-  runThis(): void{
-    console.log(this.message);
-  }
+  // runThis(): void{
+  //   console.log(this.message);
+  // }
 
 }
 
@@ -61,12 +60,18 @@ export class SelectedRoastPageComponent implements OnInit {
 export class ReviewDialog{
   reviewResults: any;
   @Input() message: CoffeeResult;
+  currentUserId: any;
+  currentUserName: any;
 
   constructor(private reviewService: ReviewService, @Inject(MAT_DIALOG_DATA) public data: any) { }
-  _data;
+  _data: any;
 
   ngOnInit() {
     this._data = this.data;
+    this.findReviews(this.data.id);
+    this.currentUserId = localStorage.getItem('userId');
+    this.currentUserName = localStorage.getItem('email');
+
   }
 
 
@@ -79,6 +84,7 @@ export class ReviewDialog{
     findReviews(coffeId: number) {
       this.reviewService.getReview(coffeId).subscribe(data => {
           this.reviewResults = data;
+          console.log(this.reviewResults);
       });
     }
 

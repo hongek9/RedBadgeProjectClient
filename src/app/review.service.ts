@@ -9,7 +9,7 @@ import { Review } from './review';
 })
 export class ReviewService {
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({Authorization: localStorage.getItem('sessionToken')})
   };
 
   constructor(private http: HttpClient) { }
