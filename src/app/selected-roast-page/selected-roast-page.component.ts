@@ -23,7 +23,7 @@ export class SelectedRoastPageComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
   ngOnInit() {
-    this.runThis();
+
   }
 
   selectCoffee(coffee: any): void {
@@ -31,12 +31,12 @@ export class SelectedRoastPageComponent implements OnInit {
     this.page = 2;
   }
 
-  buyNow(name): void {
+  buyNow(name: any): void {
     this.name = name;
     this.checkout = [];
     console.log(this.checkout);
   }
-  openDialog(result): void{
+  openDialog(result: any): void{
     console.log(result);
     const dialogRef = this.dialog.open(ReviewDialog, {
       width: '500px',
@@ -45,9 +45,16 @@ export class SelectedRoastPageComponent implements OnInit {
     });
   }
 
+<<<<<<< HEAD
   runThis(): void{
     console.log(this.message);
   }
+=======
+  // runThis(): void{
+  //   console.log(this.message);
+  // }
+
+>>>>>>> c98181f48a3c08b00f2f4ff5529129835f202b6b
 }
 
 @Component({
@@ -57,36 +64,55 @@ export class SelectedRoastPageComponent implements OnInit {
 })
 
 export class ReviewDialog{
+  admin: string;
+
+
   reviewResults: any;
+<<<<<<< HEAD
+=======
+  @Input() message: CoffeeResult;
+  currentUserId: any;
+  currentUserName: any;
+>>>>>>> c98181f48a3c08b00f2f4ff5529129835f202b6b
 
   constructor(private reviewService: ReviewService, @Inject(MAT_DIALOG_DATA) public data: any) { }
-  _data;
+  _data: any;
 
   ngOnInit() {
     this._data = this.data;
+    this.findReviews(this.data.id);
+    this.currentUserId = localStorage.getItem('userId');
+    this.currentUserName = localStorage.getItem('email');
+    this.admin = localStorage.getItem('admin');
+    console.log(this.admin);
   }
 
     createReview(review: Review, coffeeId: number) {
+      console.log(review);
       this.reviewService.addReview(review, coffeeId).subscribe(data => {
         console.log(data);
+        this.findReviews(coffeeId);
       });
     }
 
     findReviews(coffeId: number) {
       this.reviewService.getReview(coffeId).subscribe(data => {
           this.reviewResults = data;
+          console.log(this.reviewResults);
       });
     }
 
-    updateReview(review: Review, coffeId: number) {
-      this.reviewService.editReview(review, coffeId).subscribe(data => {
+    updateReview(review: Review, coffeeId: number) {
+      this.reviewService.editReview(review, coffeeId).subscribe(data => {
         console.log(data);
+        this.findReviews(coffeeId);
       });
     }
 
-    destroyReview(reviewId: number) {
+    destroyReview(reviewId: number, coffeeId: number) {
       this.reviewService.deleteReview(reviewId).subscribe(data => {
         console.log(data);
+        this.findReviews(coffeeId);
       });
     }
 }
