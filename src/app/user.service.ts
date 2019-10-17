@@ -18,7 +18,7 @@ export class UserService {
   };
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('sessionToken')));
     this.currentUser = this.currentUserSubject.asObservable();
    }
 
@@ -28,7 +28,8 @@ export class UserService {
 
   addUser(user: User): Observable<User> {
     return this.http.post<User>(`https://jce-cupojoy-server.herokuapp.com/user/signup`, user).pipe(map(current => {
-      localStorage.setItem('user', JSON.stringify(current));
+      // localStorage.setItem('user', JSON.stringify(current));
+      localStorage.setItem('admin', JSON.stringify(current.user.admin));
       localStorage.setItem('sessionToken', JSON.stringify(current.sessionToken));
       localStorage.setItem('userID', JSON.stringify(current.user.id));
       localStorage.setItem('email', current.user.email);
@@ -39,7 +40,8 @@ export class UserService {
 
   signInUser(user: User): Observable<User> {
     return this.http.post<User>(`https://jce-cupojoy-server.herokuapp.com/user/signin`, user).pipe(map(current => {
-      localStorage.setItem('user', JSON.stringify(current));
+      // localStorage.setItem('user', JSON.stringify(current));
+      localStorage.setItem('admin', JSON.stringify(current.user.admin));
       localStorage.setItem('sessionToken', JSON.stringify(current.sessionToken));
       localStorage.setItem('userId', JSON.stringify(current.user.id));
       localStorage.setItem('email', JSON.stringify(current.user.email));
@@ -52,9 +54,10 @@ export class UserService {
   }
 
   logout() {
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('sessionToken');
     localStorage.removeItem('userId');
     localStorage.removeItem('email');
+    localStorage.removeItem('admin');
     this.currentUserSubject.next(null);
 
   }
