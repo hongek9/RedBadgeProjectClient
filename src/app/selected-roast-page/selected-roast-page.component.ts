@@ -3,6 +3,7 @@ import { CoffeeResult } from '../coffeeResults';
 import { ReviewService } from '../review.service';
 import { Review } from '../review';
 import { MatDialog } from '@angular/material/dialog';
+import { CoffeeService } from '../coffee.service';
 
 
 @Component({
@@ -16,12 +17,13 @@ export class SelectedRoastPageComponent implements OnInit {
   page = 1;
   
   selectedCoffee: any;
-  name: any;
-  checkout = [];
+  name: CoffeeResult[];
+  // checkout: string[];
   
   @Input() message: CoffeeResult;
   
-  constructor() { }
+  
+  constructor( private coffeeService: CoffeeService) { }
   ngOnInit() {
     this.runThis();
   }
@@ -33,10 +35,10 @@ export class SelectedRoastPageComponent implements OnInit {
   
   buyNow(name): void {
     this.name = name;
-    this.checkout = [name];
-    console.log(name);
-    console.log(this.checkout);
+  
+    this.coffeeService.cartCoffees.emit(this.name)
   }
+//we created an event to subscribe to the data of the buyNow button from the checkout page.
 
   runThis(): void{
     console.log(this.message);

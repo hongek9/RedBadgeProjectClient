@@ -1,8 +1,8 @@
 
 import { Component, Inject, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { SelectedCoffeePageComponent } from '../selected-coffee-page/selected-coffee-page.component';
-
+import { CoffeeService } from '../coffee.service';
+import { CoffeeResult } from '../coffeeResults';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -12,10 +12,10 @@ export class CheckoutComponent {
 
   selectedCoffee: any;
   // buyNow: any;
+  coffee: CoffeeResult[]
+  // @Input() checkout: string [];
 
-  @Input() checkout: string [];
-
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private coffeeService : CoffeeService) { }
 
 
   openDialog(): void {
@@ -32,16 +32,19 @@ export class CheckoutComponent {
   }
 
   ngOnInit() {
+    // this.coffeeService.cartCoffees.subscribe((coffee:CoffeeResult) => console.log(coffee)
+    // )
+    this.coffeeService.cartCoffees.subscribe(data => {this.coffee = data; console.log(data)});
     this.runthis();
   }
-
-  addToCheckout(coffee:any): void {
-    this.selectedCoffee = coffee;
-    // this.buyNow = [];
+// Here OnInit we are subscribing to the coffees through the coffee service file
+  // displayCheckout() :void {
+  //   this.coffeeService.cartCoffees.subscribe(data => {this.coffee = data; console.log(data)});
+  // }
+  runthis() :void {
+    console.log(this.coffee);
+    
   }
- runthis():void {
-   console.log(this.checkout);
- }
 
 
 }
@@ -57,6 +60,8 @@ export class PaymentDialog{
     onNoClick(): void {
       this.dialogRef.close();
     }
+
+    
 }
 
 @Component({
