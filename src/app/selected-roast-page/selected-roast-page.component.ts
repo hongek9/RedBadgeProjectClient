@@ -23,6 +23,7 @@ export class SelectedRoastPageComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
   ngOnInit() {
+
   }
 
   selectCoffee(coffee: any): void {
@@ -58,6 +59,9 @@ export class SelectedRoastPageComponent implements OnInit {
 })
 
 export class ReviewDialog{
+  admin: string;
+
+
   reviewResults: any;
   @Input() message: CoffeeResult;
   currentUserId: any;
@@ -71,13 +75,16 @@ export class ReviewDialog{
     this.findReviews(this.data.id);
     this.currentUserId = localStorage.getItem('userId');
     this.currentUserName = localStorage.getItem('email');
-
+    this.admin = localStorage.getItem('admin');
+    console.log(this.admin);
   }
 
 
     createReview(review: Review, coffeeId: number) {
+      console.log(review);
       this.reviewService.addReview(review, coffeeId).subscribe(data => {
         console.log(data);
+        this.findReviews(coffeeId);
       });
     }
 
@@ -88,15 +95,17 @@ export class ReviewDialog{
       });
     }
 
-    updateReview(review: Review, coffeId: number) {
-      this.reviewService.editReview(review, coffeId).subscribe(data => {
+    updateReview(review: Review, coffeeId: number) {
+      this.reviewService.editReview(review, coffeeId).subscribe(data => {
         console.log(data);
+        this.findReviews(coffeeId);
       });
     }
 
-    destroyReview(reviewId: number) {
+    destroyReview(reviewId: number, coffeeId: number) {
       this.reviewService.deleteReview(reviewId).subscribe(data => {
         console.log(data);
+        this.findReviews(coffeeId);
       });
     }
 }
