@@ -3,7 +3,7 @@ import { CoffeeResult } from '../coffeeResults';
 import { ReviewService } from '../review.service';
 import { Review } from '../review';
 import { CoffeeService } from '../coffee.service';
-import { MatDialog, MAT_DIALOG_DATA  } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
 @Component({
@@ -18,14 +18,19 @@ export class SelectedRoastPageComponent implements OnInit {
 
   selectedCoffee: any;
   name: CoffeeResult[];
-  // checkout: string[];
+  checkout: string[] =[];
+  
   
   @Input() message: CoffeeResult;
   
   
-  constructor( private coffeeService: CoffeeService) { }
+  constructor( private coffeeService: CoffeeService, public dialog: MatDialog) {
+    // localStorage.setItem('checkout', JSON.stringify({ name: name }))
+   }
+  
+  
   ngOnInit() {
-
+    // this.checkout();
   }
 
   selectCoffee(coffee: any): void {
@@ -33,21 +38,36 @@ export class SelectedRoastPageComponent implements OnInit {
     this.page = 2;
   }
 
+  // ******
+  // Sending the coffee name from the buyNow function to localStorage. 
+  // ******
   buyNow(name: any): void {
-    this.name = name;
+    this.checkout.push(name)
+    console.log(this.checkout);
   
-    this.coffeeService.cartCoffees.emit(this.name)
+    localStorage.setItem('checkout',JSON.stringify(this.checkout));
+
   }
+  
+
+
+
+
+  // this.coffeeService.cartCoffees.emit(this.name)
 //we created an event to subscribe to the data of the buyNow button from the checkout page.
+
+openDialog(result: any): void {
+  console.log(result);
+  const dialogRef = this.dialog.open(ReviewDialog, {
+    width: '500px',
+    height: '600px',
+    data: result
+  });
+}
 
   runThis(): void{
     console.log(this.message);
   }
-
-  // runThis(): void{
-  //   console.log(this.message);
-  // }
-
 }
 
 @Component({
@@ -65,7 +85,7 @@ export class ReviewDialog{
   currentUserId: any;
   currentUserName: any;
 
-  constructor(private reviewService: ReviewService, @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(private reviewService: ReviewService, @Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog) { }
   _data: any;
 
   ngOnInit() {
@@ -75,6 +95,15 @@ export class ReviewDialog{
     this.currentUserName = localStorage.getItem('email');
     this.admin = localStorage.getItem('admin');
     console.log(this.admin);
+  }
+
+  openUpdate(result): void {
+    console.log('update opens')
+    const dialogRef = this.dialog.open(UpdateDialog, {
+      width: '500px',
+      height: '600px',
+      data: result,
+    })
   }
 
 
@@ -108,3 +137,33 @@ export class ReviewDialog{
     }
 }
 
+@Component({
+  selector: 'update-dialog',
+  templateUrl: 'update-dialog.html',
+ })
+ export class UpdateDialog {
+  reviewResults: any;
+  constructor(
+    public dialogRef: MatDialogRef<UpdateDialog>,
+    private reviewService: ReviewService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+  ) {}
+  _data: any;
+  ngOnInit() {
+    console.log(this.data)
+    this._data = this.data
+    this.findReviews(this.data.id);
+  }
+  findReviews(coffeId: number) {
+    this.reviewService.getReview(coffeId).subscribe(data => {
+      this.reviewResults = data;
+      console.log(this.reviewResults);
+    });
+  }
+  updateReview(review: Review, coffeeId: number) {
+    this.reviewService.editReview(review, coffeeId).subscribe(data => {
+      console.log(data);
+      this.findReviews(coffeeId);
+    });
+  }
+ }

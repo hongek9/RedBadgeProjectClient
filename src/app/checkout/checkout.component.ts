@@ -13,7 +13,7 @@ export class CheckoutComponent {
   selectedCoffee: any;
   // buyNow: any;
   coffee: CoffeeResult[]
-  // @Input() checkout: string [];
+  checkout: any;
 
   constructor(public dialog: MatDialog, private coffeeService : CoffeeService) { }
 
@@ -42,12 +42,23 @@ export class CheckoutComponent {
   //   this.coffeeService.cartCoffees.subscribe(data => {this.coffee = data; console.log(data)});
   // }
   runthis() :void {
-    console.log(this.coffee);
-    
+    console.log(localStorage.getItem('checkout'));
   }
 
+  // ****
+  // Retrieving data from local storage
+  // ****
 
-}
+  getCheckout() {
+    if (localStorage.getItem('checkout')===null) {
+      this.checkout;
+    } else {
+      this.checkout = JSON.parse(localStorage.getItem('checkout'));
+      }
+    }
+      
+  }
+
 @Component({
   selector: 'payment-dialog',
   templateUrl: 'payment-dialog.html',

@@ -1,0 +1,10 @@
+<div class="modal">
+    <h1>Update your review</h1>
+   <br>
+   <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <textarea matInput #reviewInput placeholder="Update the review"></textarea>
+      </mat-form-field>
+      <button mat-button class="button" type="button" (click)="updateReview({review: {message: reviewInput.value}}, data.id)">Submit</button>
+    </form>
+   </div>

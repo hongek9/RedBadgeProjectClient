@@ -18,8 +18,8 @@
         has bought. Will have product and picture of product?? -->
 
             <div class="checkout">
-                    <div *ngIf="coffee" class="cart" >
-                        <div *ngFor="let result of coffee">
+                    <div *ngIf="checkout == localstorage" class="cart" >
+                        <div *ngFor="let result of checkout">
                                 <mat-card-header>
                                         <mat-card-title>{{result.name}}</mat-card-title>
                                 </mat-card-header>
@@ -28,10 +28,7 @@
                     </div>
                 </div>
         
-                
-
-        
-        
+    
        </mat-grid-tile>
 </mat-grid-list>
 
