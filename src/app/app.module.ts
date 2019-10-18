@@ -14,6 +14,7 @@ import { SelectedRoastPageComponent, ReviewDialog } from './selected-roast-page/
 import { CheckoutComponent, PaymentDialog, EasterDialog } from './checkout/checkout.component';
 import { NavbarComponent } from './navbar/navbar.component'
 import { FormsModule } from '@angular/forms';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   // components get declared
@@ -29,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     EasterDialog,
     ReviewDialog,
+    AboutComponent,
   ],
   entryComponents: [PaymentDialog, EasterDialog, ReviewDialog],
 
