@@ -7,13 +7,16 @@
     <form class="example-form">
       <mat-card-content>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Email">
+          <input #email matInput placeholder="Email">
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput #password placeholder="Password">
+          <input #password matInput #password placeholder="Password">
        </mat-form-field>
       </mat-card-content>
-      <button mat-stroked-button color="accent" class="btn-block">Register</button>
+      <button type="button" (click)="signUpUser({user: { email: email.value, password: password.value, admin: false}})" routerLink="/home" mat-stroked-button color="accent" class="btn-block">Register</button>
     </form>
+    <br>
+    <br>
+    <a routerLink="">Have an account? Go Login here!!</a>
   </mat-card>
 </div>

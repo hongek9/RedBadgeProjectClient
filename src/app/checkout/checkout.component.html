@@ -1,19 +1,25 @@
-<!-- NavBar -->
-<mat-toolbar>Log Out
-    <li href="/about">About</li>
-    <i class="material-icons" routerLink="/home">eco</i>
-    <li routerLink="/selectionPage">Our Choices</li>
-    <i class="material-icons" routerLink="/checkout">shopping_cart</i>
-</mat-toolbar>
-
 <div class="title">
     <h1>Your Cart of Joy is Ready</h1>
 </div>
 
-<mat-grid-list class="grid" cols="1" rowHeight="3:1">
-    <mat-grid-tile>This is a placeholder for our table. When we get data we will build a table here showing what user
-        has bought. Will have product and picture of product??</mat-grid-tile>
-</mat-grid-list>
+
+<!-- <mat-grid-list class="grid" cols="1" rowHeight="3:1">
+    <mat-grid-tile> -->
+            <!-- <h1>Checkout<h1> -->
+
+        <!-- This is a placeholder for our table. When we get data we will build a table here showing what user
+        has bought. Will have product and picture of product?? -->
+        <div class="checkout">
+                    <div *ngIf="checkout" class="cart" >
+                        <div *ngFor="let result of checkout">
+                                <mat-card-header>
+                                        <mat-card-title>{{result}}</mat-card-title>
+                                </mat-card-header>
+                        </div>
+                    </div>
+                </div>
+        <!-- </mat-grid-tile>
+</mat-grid-list> -->
 
 <mat-grid-list class="coupon" cols="1" rowHeight="6:1">
     <h2>Coupon Code</h2>
@@ -22,7 +28,7 @@
     <mat-form-field apperance="outline">
         <input matInput placeholder="Promo Code">
     </mat-form-field>
-    <button mat-stroked-button>Apply</button>
+    <button mat-stroked-button (click)="openEaster()">Apply</button>
 </mat-grid-list>
 <mat-grid-list class="delivery" cols="1" rowHeight="4:1">
     <h2>Delivery Address</h2>

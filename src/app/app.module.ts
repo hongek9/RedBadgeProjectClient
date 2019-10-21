@@ -10,10 +10,11 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { SelectionPageComponent } from './selection-page/selection-page.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SelectedRoastPageComponent } from './selected-roast-page/selected-roast-page.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { ReviewComponent } from './review/review.component';
-import { SelectedCoffeePageComponent } from './selected-coffee-page/selected-coffee-page.component'
+import { SelectedRoastPageComponent, ReviewDialog, UpdateDialog } from './selected-roast-page/selected-roast-page.component';
+import { CheckoutComponent, PaymentDialog, EasterDialog } from './checkout/checkout.component';
+import { NavbarComponent } from './navbar/navbar.component'
+import { FormsModule } from '@angular/forms';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   // components get declared
@@ -25,9 +26,14 @@ import { SelectedCoffeePageComponent } from './selected-coffee-page/selected-cof
     SelectionPageComponent,
     SelectedRoastPageComponent,
     CheckoutComponent,
-    ReviewComponent,
-    SelectedCoffeePageComponent
+    PaymentDialog,
+    NavbarComponent,
+    EasterDialog,
+    ReviewDialog,
+    UpdateDialog,
   ],
+  entryComponents: [PaymentDialog, EasterDialog, ReviewDialog, UpdateDialog],
+
   imports: [
     //modules get imported
     BrowserModule,
@@ -35,6 +41,7 @@ import { SelectedCoffeePageComponent } from './selected-coffee-page/selected-cof
     BrowserAnimationsModule,
     DemoMaterialModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [
 
