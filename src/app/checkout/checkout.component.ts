@@ -31,7 +31,8 @@ export class CheckoutComponent {
     });
   }
 
-  ngOnInit() {
+  ngOnInit() { 
+    this.getCheckout();
     // this.coffeeService.cartCoffees.subscribe((coffee:CoffeeResult) => console.log(coffee)
     // )
     this.coffeeService.cartCoffees.subscribe(data => {this.coffee = data; console.log(data)});
@@ -45,6 +46,8 @@ export class CheckoutComponent {
     console.log(localStorage.getItem('checkout'));
   }
 
+  
+
   // ****
   // Retrieving data from local storage
   // ****
@@ -54,9 +57,9 @@ export class CheckoutComponent {
       this.checkout;
     } else {
       this.checkout = JSON.parse(localStorage.getItem('checkout'));
+      // console.log(this.checkout[1])
       }
-    }
-      
+    }   
   }
 
 @Component({
