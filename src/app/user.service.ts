@@ -58,6 +58,7 @@ export class UserService {
     localStorage.removeItem('userId');
     localStorage.removeItem('email');
     localStorage.removeItem('admin');
+    localStorage.removeItem('checkout');
     this.currentUserSubject.next(null);
 
   }
