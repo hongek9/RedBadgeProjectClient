@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { CoffeeResult } from '../coffeeResults';
 import { ReviewService } from '../review.service';
 import { Review } from '../review';
+import { CoffeeService } from '../coffee.service';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
@@ -15,32 +16,53 @@ export class SelectedRoastPageComponent implements OnInit {
   page = 1;
 
   selectedCoffee: any;
-  name: any;
-  checkout = [];
-
+  name: CoffeeResult[];
+  checkout: string[] =[];
+  
+  
   @Input() message: CoffeeResult;
-
-  constructor(public dialog: MatDialog) { }
-
+  
+  constructor( private coffeeService: CoffeeService, public dialog: MatDialog) {
+    // localStorage.setItem('checkout', JSON.stringify({ name: name }))
+   }
+  
+  
   ngOnInit() {
+    // this.checkout();
+
   }
 
   selectCoffee(coffee: any): void {
     this.selectedCoffee = coffee;
     this.page = 2;
   }
+  // ******
+  // Sending the coffee name from the buyNow function to localStorage. 
+  // ******
   buyNow(name: any): void {
-    this.name = name;
-    this.checkout = [];
+    this.checkout.push(name)
+
     console.log(this.checkout);
+  
+    localStorage.setItem('checkout',JSON.stringify(this.checkout));
+
   }
-  openDialog(result: any): void {
-    console.log(result);
-    const dialogRef = this.dialog.open(ReviewDialog, {
-      width: '500px',
-      height: '600px',
-      data: result
-    });
+  
+  // this.coffeeService.cartCoffees.emit(this.name)
+//we created an event to subscribe to the data of the buyNow button from the checkout page.
+
+openDialog(result: any): void {
+  console.log(result);
+  const dialogRef = this.dialog.open(ReviewDialog, {
+    width: '500px',
+    height: '600px',
+    data: result
+  });
+}
+
+  runThis(): void{
+    console.log(this.message);
+
   }
 }
 
@@ -64,6 +86,7 @@ export class ReviewDialog {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialog: MatDialog,
   ) {}
+
 
   _data: any;
 
@@ -135,6 +158,7 @@ export class UpdateDialog {
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
+
   _data: any;
 
   ngOnInit() {
@@ -145,13 +169,14 @@ export class UpdateDialog {
   ngOnDestroy() {
     this.findReviews(this.data.coffeeID);
   }
-
+  
   findReviews(coffeId: number) {
     this.reviewService.getReview(coffeId).subscribe(data => {
       this.reviewResults = data;
       console.log(this.reviewResults);
     });
   }
+
 
   updateReview(review: Review, reviewID: number, coffeeId: number) {
     this.reviewService.editReview(review, reviewID).subscribe(data => {
@@ -161,3 +186,4 @@ export class UpdateDialog {
     });
   }
 }
+

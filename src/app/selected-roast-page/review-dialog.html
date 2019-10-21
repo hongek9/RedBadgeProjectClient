@@ -5,6 +5,7 @@
     <br>
     <h1>Reviews</h1>
   </div>
+
 </div>
 
 <div *ngIf="reviewResults" class="reviews">
@@ -24,3 +25,4 @@
   </mat-form-field>
   <button mat-button class="button" type="button" (click)="createReview({review: {message: reviewInput.value}},data.id)">Submit</button>
 </form>
+

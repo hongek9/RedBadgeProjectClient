@@ -1,7 +1,8 @@
 
 import { Component, Inject, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-
+import { CoffeeService } from '../coffee.service';
+import { CoffeeResult } from '../coffeeResults';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -11,10 +12,10 @@ export class CheckoutComponent {
 
   selectedCoffee: any;
   // buyNow: any;
+  coffee: CoffeeResult[]
+  checkout: any;
 
-  @Input() buyNow: CheckoutComponent;
-
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private coffeeService : CoffeeService) { }
 
 
   openDialog(): void {
@@ -30,16 +31,37 @@ export class CheckoutComponent {
     });
   }
 
-  ngOnInit() {
+  ngOnInit() { 
+    this.getCheckout();
+    // this.coffeeService.cartCoffees.subscribe((coffee:CoffeeResult) => console.log(coffee)
+    // )
+    this.coffeeService.cartCoffees.subscribe(data => {this.coffee = data; console.log(data)});
+    this.runthis();
+  }
+// Here OnInit we are subscribing to the coffees through the coffee service file
+  // displayCheckout() :void {
+  //   this.coffeeService.cartCoffees.subscribe(data => {this.coffee = data; console.log(data)});
+  // }
+  runthis() :void {
+    console.log(localStorage.getItem('checkout'));
   }
 
-  addToCheckout(coffee:any): void {
-    this.selectedCoffee = coffee;
-    // this.buyNow = [];
+  
+
+  // ****
+  // Retrieving data from local storage
+  // ****
+
+  getCheckout() {
+    if (localStorage.getItem('checkout')===null) {
+      this.checkout;
+    } else {
+      this.checkout = JSON.parse(localStorage.getItem('checkout'));
+      // console.log(this.checkout[1])
+      }
+    }   
   }
 
-
-}
 @Component({
   selector: 'payment-dialog',
   templateUrl: 'payment-dialog.html',
@@ -52,6 +74,8 @@ export class PaymentDialog{
     onNoClick(): void {
       this.dialogRef.close();
     }
+
+    
 }
 
 @Component({
