@@ -7,6 +7,7 @@ import { SelectionPageComponent } from './selection-page/selection-page.componen
 import { SelectedRoastPageComponent } from './selected-roast-page/selected-roast-page.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AuthguardService } from './authguard.service';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
