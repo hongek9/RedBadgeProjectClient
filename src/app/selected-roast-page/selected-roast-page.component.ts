@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { CoffeeResult } from '../coffeeResults';
 import { ReviewService } from '../review.service';
 import { Review } from '../review';
-import { MatDialog, MAT_DIALOG_DATA  } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
 @Component({
@@ -10,7 +10,6 @@ import { MatDialog, MAT_DIALOG_DATA  } from '@angular/material/dialog';
   templateUrl: './selected-roast-page.component.html',
   styleUrls: ['./selected-roast-page.component.css']
 })
-
 
 export class SelectedRoastPageComponent implements OnInit {
   page = 1;
@@ -22,22 +21,20 @@ export class SelectedRoastPageComponent implements OnInit {
   @Input() message: CoffeeResult;
 
   constructor(public dialog: MatDialog) { }
-  ngOnInit() {
 
+  ngOnInit() {
   }
 
   selectCoffee(coffee: any): void {
     this.selectedCoffee = coffee;
     this.page = 2;
   }
-
   buyNow(name: any): void {
     this.name = name;
     this.checkout = [];
-    // console.log(name);
     console.log(this.checkout);
   }
-  openDialog(result: any): void{
+  openDialog(result: any): void {
     console.log(result);
     const dialogRef = this.dialog.open(ReviewDialog, {
       width: '500px',
@@ -45,29 +42,29 @@ export class SelectedRoastPageComponent implements OnInit {
       data: result
     });
   }
-
-  // runThis(): void{
-  //   console.log(this.message);
-  // }
-
 }
+
+// Review Modal Component
 
 @Component({
   selector: 'review-dialog',
   templateUrl: 'review-dialog.html',
   styleUrls: ['review-dialog.css'],
 })
-
-export class ReviewDialog{
+export class ReviewDialog {
   admin: string;
-
-
   reviewResults: any;
+
   @Input() message: CoffeeResult;
   currentUserId: any;
   currentUserName: any;
 
-  constructor(private reviewService: ReviewService, @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(
+    private reviewService: ReviewService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialog: MatDialog,
+  ) {}
+
   _data: any;
 
   ngOnInit() {
@@ -79,34 +76,80 @@ export class ReviewDialog{
     console.log(this.admin);
   }
 
+  openUpdate(result): void {
+    console.log('update opens')
+    const dialogRef = this.dialog.open(UpdateDialog, {
+      width: '500px',
+      height: '600px',
+      data: result,
+    })
+  }
 
-    createReview(review: Review, coffeeId: number) {
-      console.log(review);
-      this.reviewService.addReview(review, coffeeId).subscribe(data => {
-        console.log(data);
-        this.findReviews(coffeeId);
-      });
-    }
+  createReview(review: Review, coffeeId: number) {
+    console.log(review);
+    this.reviewService.addReview(review, coffeeId).subscribe(data => {
+      console.log(data);
+      this.findReviews(coffeeId);
+    });
+  }
 
-    findReviews(coffeId: number) {
-      this.reviewService.getReview(coffeId).subscribe(data => {
-          this.reviewResults = data;
-          console.log(this.reviewResults);
-      });
-    }
+  findReviews(coffeId: number) {
+    this.reviewService.getReview(coffeId).subscribe(data => {
+      this.reviewResults = data;
+      console.log(this.reviewResults);
+    });
+  }
 
-    updateReview(review: Review, coffeeId: number) {
-      this.reviewService.editReview(review, coffeeId).subscribe(data => {
-        console.log(data);
-        this.findReviews(coffeeId);
-      });
-    }
+  updateReview(review: Review, coffeeId: number) {
+    this.reviewService.editReview(review, coffeeId).subscribe(data => {
+      console.log(data);
+      this.findReviews(coffeeId);
+    });
+  }
 
-    destroyReview(reviewId: number, coffeeId: number) {
-      this.reviewService.deleteReview(reviewId).subscribe(data => {
-        console.log(data);
-        this.findReviews(coffeeId);
-      });
-    }
+  destroyReview(reviewId: number, coffeeId: number) {
+    this.reviewService.deleteReview(reviewId).subscribe(data => {
+      console.log(data);
+      this.findReviews(coffeeId);
+    });
+  }
 }
 
+// Update Modal component
+@Component({
+  selector: 'update-dialog',
+  templateUrl: 'update-dialog.html',
+})
+
+export class UpdateDialog {
+
+  reviewResults: any;
+
+  constructor(
+    public dialogRef: MatDialogRef<UpdateDialog>,
+    private reviewService: ReviewService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+  ) {}
+
+  _data: any;
+
+  ngOnInit() {
+    console.log(this.data)
+    this._data = this.data
+    this.findReviews(this.data.id);
+  }
+
+  findReviews(coffeId: number) {
+    this.reviewService.getReview(coffeId).subscribe(data => {
+      this.reviewResults = data;
+      console.log(this.reviewResults);
+    });
+  }
+
+  updateReview(review: Review, coffeeId: number) {
+    this.reviewService.editReview(review, coffeeId).subscribe(data => {
+      console.log(data);
+      this.findReviews(coffeeId);
+    });
+  }
+}

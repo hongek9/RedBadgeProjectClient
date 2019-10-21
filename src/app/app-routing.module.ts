@@ -6,8 +6,6 @@ import { RegisterComponent } from './register/register.component';
 import { SelectionPageComponent } from './selection-page/selection-page.component';
 import { SelectedRoastPageComponent } from './selected-roast-page/selected-roast-page.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { SelectedCoffeePageComponent } from './selected-coffee-page/selected-coffee-page.component';
-import { ReviewComponent } from './review/review.component';
 import { AuthguardService } from './authguard.service';
 
 const routes: Routes = [
@@ -17,8 +15,6 @@ const routes: Routes = [
   { path: 'selectionPage', component: SelectionPageComponent, canActivate: [AuthguardService] },
   { path: 'roastPage', component: SelectedRoastPageComponent, canActivate: [AuthguardService] },
   { path: 'checkout', component: CheckoutComponent, canActivate: [AuthguardService]},
-  { path: 'coffeePage', component: SelectedCoffeePageComponent, canActivate: [AuthguardService]},
-  { path: 'reviews', component: ReviewComponent, canActivate: [AuthguardService]},
 ];
 
 @NgModule({

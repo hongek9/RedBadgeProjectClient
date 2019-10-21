@@ -10,10 +10,8 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { SelectionPageComponent } from './selection-page/selection-page.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SelectedRoastPageComponent, ReviewDialog } from './selected-roast-page/selected-roast-page.component';
+import { SelectedRoastPageComponent, ReviewDialog, UpdateDialog } from './selected-roast-page/selected-roast-page.component';
 import { CheckoutComponent, PaymentDialog, EasterDialog } from './checkout/checkout.component';
-import { ReviewComponent } from './review/review.component';
-import { SelectedCoffeePageComponent } from './selected-coffee-page/selected-coffee-page.component';
 import { NavbarComponent } from './navbar/navbar.component'
 
 @NgModule({
@@ -26,14 +24,13 @@ import { NavbarComponent } from './navbar/navbar.component'
     SelectionPageComponent,
     SelectedRoastPageComponent,
     CheckoutComponent,
-    ReviewComponent,
-    SelectedCoffeePageComponent,
     PaymentDialog,
     NavbarComponent,
     EasterDialog,
     ReviewDialog,
+    UpdateDialog,
   ],
-  entryComponents: [PaymentDialog, EasterDialog, ReviewDialog],
+  entryComponents: [PaymentDialog, EasterDialog, ReviewDialog, UpdateDialog],
 
   imports: [
     //modules get imported
