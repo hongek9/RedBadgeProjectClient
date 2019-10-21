@@ -5,6 +5,6 @@ export interface User {
     password: string;
     admin: boolean;
   };
-  message: string;
-  sessionToken: string;
+  message?: string;
+  sessionToken?: string;
 }
