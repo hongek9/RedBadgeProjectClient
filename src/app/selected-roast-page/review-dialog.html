@@ -22,5 +22,5 @@
   <mat-form-field class="example-full-width">
     <textarea matInput #reviewInput placeholder="Leave a review"></textarea>
   </mat-form-field>
-  <button mat-button class="button" type="button" (click)="createReview({review: {message: reviewInput.value}},data.id)" >Submit</button>
+  <button mat-button class="button" type="button" (click)="updateReview({review: {message: reviewInput.value}},data.id)" >Submit</button>
 </form>

@@ -63,7 +63,7 @@ export class ReviewDialog {
     private reviewService: ReviewService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialog: MatDialog,
-  ) { }
+  ) {}
 
   _data: any;
 
