@@ -30,8 +30,7 @@ import { AboutComponent } from './about/about.component';
     NavbarComponent,
     EasterDialog,
     ReviewDialog,
-    AboutComponent,
-    UpdateDialog
+    UpdateDialog,
   ],
   entryComponents: [PaymentDialog, EasterDialog, ReviewDialog, UpdateDialog],
 

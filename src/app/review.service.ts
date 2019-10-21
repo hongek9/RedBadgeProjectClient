@@ -26,8 +26,8 @@ export class ReviewService {
     return this.http.get<Review[]>(`https://jce-cupojoy-server.herokuapp.com/review/${coffeeId}`);
   }
 
-  editReview(review: Review, coffeeId: number): Observable<any> {
-    return this.http.put(`https://jce-cupojoy-server.herokuapp.com/review/${coffeeId}`, review, this.httpOptions);
+  editReview(review: Review, reviewId: number): Observable<any> {
+    return this.http.put(`https://jce-cupojoy-server.herokuapp.com/review/${reviewId}`, JSON.stringify(review), this.httpOptions);
   }
 
   deleteReview(reviewId: number): Observable<Review> {

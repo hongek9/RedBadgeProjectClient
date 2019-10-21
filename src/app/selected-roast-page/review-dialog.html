@@ -5,20 +5,24 @@
     <br>
     <h1>Reviews</h1>
   </div>
- </div>
- <div *ngIf="reviewResults" class="reviews">
+
+</div>
+
+<div *ngIf="reviewResults" class="reviews">
   <div *ngFor="let review of reviewResults">
       <h3>{{review.message}}</h3>
       <div *ngIf="review.userId == currentUserId || admin === 'true'">
-          <button mat-button type="button" (click)="openUpdate(data)">Update</button>
+          <button mat-button type="button" (click)="openUpdate(data.id,review.id)">Update</button>
           <button mat-button type="submit" (click)="destroyReview(review.id, data.id)">Delete</button>
       </div>
   </div>
- </div>
- <br>
- <form class="example-form">
+</div>
+<br>
+
+<form class="example-form">
   <mat-form-field class="example-full-width">
     <textarea matInput #reviewInput placeholder="Leave a review"></textarea>
   </mat-form-field>
-  <button mat-button class="button" type="button" (click)="createReview({review: {message: reviewInput.value}},data.id)" >Submit</button>
- </form>
+  <button mat-button class="button" type="button" (click)="createReview({review: {message: reviewInput.value}},data.id)">Submit</button>
+</form>
+
