@@ -73,15 +73,19 @@ export class ReviewDialog {
     this.currentUserId = localStorage.getItem('userId');
     this.currentUserName = localStorage.getItem('email');
     this.admin = localStorage.getItem('admin');
-    console.log(this.admin);
+    console.log('admin', this.admin);
   }
 
-  openUpdate(result): void {
-    console.log('update opens')
+  openUpdate(result: any, reviewId: any): void {
+    console.log('update opens');
     const dialogRef = this.dialog.open(UpdateDialog, {
       width: '500px',
       height: '600px',
-      data: result,
+      data: {coffeeID: result, reviewID: reviewId},
+
+    });
+    dialogRef.afterClosed().subscribe(results => {
+      this.findReviews(this.data.id);
     })
   }
 
@@ -100,10 +104,10 @@ export class ReviewDialog {
     });
   }
 
-  updateReview(review: Review, coffeeId: number) {
-    this.reviewService.editReview(review, coffeeId).subscribe(data => {
+  updateReview(review: Review, reviewId: number, coffeeId: number) {
+    this.reviewService.editReview(review, reviewId).subscribe(data => {
       console.log(data);
-      this.findReviews(coffeeId);
+      // this.findReviews(coffeeId);
     });
   }
 
@@ -134,9 +138,12 @@ export class UpdateDialog {
   _data: any;
 
   ngOnInit() {
-    console.log(this.data)
-    this._data = this.data
-    this.findReviews(this.data.id);
+    console.log(this.data);
+    this._data = this.data;
+  }
+
+  ngOnDestroy() {
+    this.findReviews(this.data.coffeeID);
   }
 
   findReviews(coffeId: number) {
@@ -146,9 +153,10 @@ export class UpdateDialog {
     });
   }
 
-  updateReview(review: Review, coffeeId: number) {
-    this.reviewService.editReview(review, coffeeId).subscribe(data => {
+  updateReview(review: Review, reviewID: number, coffeeId: number) {
+    this.reviewService.editReview(review, reviewID).subscribe(data => {
       console.log(data);
+      console.log(coffeeId);
       this.findReviews(coffeeId);
     });
   }
