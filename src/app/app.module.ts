@@ -14,7 +14,6 @@ import { SelectedRoastPageComponent, ReviewDialog, UpdateDialog } from './select
 import { CheckoutComponent, PaymentDialog, EasterDialog } from './checkout/checkout.component';
 import { NavbarComponent } from './navbar/navbar.component'
 import { FormsModule } from '@angular/forms';
-import { AboutComponent } from './about/about.component';
 
 @NgModule({
   // components get declared
