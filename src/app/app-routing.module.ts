@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: SplashComponent, canActivate: [AuthguardService] },
-
+  {path: 'about', component: AboutComponent, canActivate: [AuthguardService]},
   { path: 'selectionPage', component: SelectionPageComponent, canActivate: [AuthguardService] },
   { path: 'roastPage', component: SelectedRoastPageComponent, canActivate: [AuthguardService] },
   { path: 'checkout', component: CheckoutComponent, canActivate: [AuthguardService]},
